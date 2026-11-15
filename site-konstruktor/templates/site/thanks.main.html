@@ -1,0 +1,19 @@
+<!-- Фрагмент <main> страницы «Спасибо» (Success URL, метод GET). Сборка:
+     node build.mjs thanks.main.html t.html && python3 page.py index.html t.html thanks.html "Спасибо за покупку" "Thank you" "{{PRODUCT}}"
+     и подключить assets/pay.js. fail.html — так же, с текстом «Оплата не прошла, деньги не списаны, попробуйте ещё раз». -->
+<main id="top" class="doc">
+  <div class="box doc__in pay" data-api="https://api.{{DOMAIN}}">
+    <h1 class="doc__title">[[Спасибо за покупку||Thank you for your purchase]]</h1>
+    <p class="doc__meta" id="pay-order"></p>
+    <div class="pay__box" id="pay-wait"><p>[[Получаем подтверждение оплаты. Обычно это несколько секунд.||Waiting for the payment confirmation. It usually takes a few seconds.]]</p></div>
+    <div class="pay__box" id="pay-ok" hidden>
+      <p class="pay__label">[[Ваш {{товар/ключ}}||Your {{item/key}}]]</p>
+      <p class="pay__key"><code id="pay-key"></code> <button type="button" class="btn btn--sm" id="pay-copy">[[Скопировать||Copy]]</button></p>
+      <p class="pay__mail" id="pay-mail"></p>
+      <ol class="steps"><li>[[{{Что делать дальше: скачать, активировать…}}||{{Next steps}}]]</li></ol>
+    </div>
+    <div class="pay__box" id="pay-slow" hidden><p>[[Оплата ещё обрабатывается. {{Товар}} придёт на почту, как только платёж подтвердится.||The payment is still being processed. It will be emailed once confirmed.]]</p></div>
+    <div class="pay__box" id="pay-none" hidden><p>[[Заказ не найден. Если вы оплатили, {{товар}} придёт на почту. Если письма нет в течение часа, проверьте «Спам» и напишите нам.||Order not found. If you paid, it will be emailed to you. Check spam and write to us if nothing arrives within an hour.]]</p></div>
+    <p class="pay__help">[[Вопросы: <a href="mailto:{{SUPPORT_EMAIL}}">{{SUPPORT_EMAIL}}</a>, {{PHONE}}. Укажите номер заказа.||Questions: <a href="mailto:{{SUPPORT_EMAIL}}">{{SUPPORT_EMAIL}}</a>. Please include the order number.]]</p>
+  </div>
+</main>
