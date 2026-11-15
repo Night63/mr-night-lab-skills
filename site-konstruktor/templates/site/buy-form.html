@@ -1,0 +1,17 @@
+<!-- Форма покупки. Вставить в исходник главной (пары [[ru||en]] собирает build.mjs).
+     data-pay="on" — добавить ТОЛЬКО после проверки, что в функции RK_TEST=0 (скрипт _claude_pay.cmd).
+     Плашка доверия: перечислять ТОЛЬКО способы оплаты, которые реально есть на странице платёжки. -->
+<form class="buy" id="buy" action="#buy" method="post" novalidate aria-labelledby="h-buy"
+      data-api="https://api.{{DOMAIN}}" data-support="{{SUPPORT_EMAIL}}">
+  <h3 id="h-buy">[[Покупка||Purchase]]</h3>
+  <p class="buy__lead">[[Регистрация не нужна. {{Товар}} появится на странице сразу после оплаты и придёт на эту почту.||No sign-up. Your {{item}} appears on the page right after payment and is sent to this email.]]</p>
+  <p class="field"><label for="buy-email">[[Почта||Email]]</label><input id="buy-email" name="email" type="email" autocomplete="email" inputmode="email" required></p>
+  <p class="field"><label for="buy-email2">[[Повторите почту||Repeat your email]]</label><input id="buy-email2" name="email2" type="email" autocomplete="email" inputmode="email" required aria-describedby="buy-match"></p>
+  <p class="buy__hint" id="buy-match" aria-live="polite"></p>
+  <p class="check"><input id="buy-offer" name="offer" type="checkbox" required><label for="buy-offer">[[Принимаю условия <a href="offer.html" target="_blank" rel="noopener">публичной оферты</a>||I accept the <a href="offer.html" target="_blank" rel="noopener">public offer</a>]]</label></p>
+  <p class="check"><input id="buy-pd" name="pd" type="checkbox" required><label for="buy-pd">[[Даю <a href="consent.html" target="_blank" rel="noopener">согласие на обработку персональных данных</a> (почты) для покупки. Как обрабатываются данные — в <a href="privacy.html" target="_blank" rel="noopener">Политике</a>||I give my <a href="consent.html" target="_blank" rel="noopener">consent to the processing of personal data</a> (email). See the <a href="privacy.html" target="_blank" rel="noopener">Privacy policy</a>]]</label></p>
+  <p class="buy__actions"><button type="submit" class="btn" disabled>[[Перейти к оплате · {{PRICE}} ₽||Go to payment · {{PRICE}} ₽]]</button></p>
+  <p class="buy__note" aria-live="polite"></p>
+  <p class="paytrust">[[Оплата через <b>{{ПЛАТЁЖКА}}</b>: {{реальные способы, сверенные со страницей оплаты}}. Данные карты вводятся на защищённой странице платёжного сервиса, мы их не видим. Чек придёт на почту.||Payment via <b>{{PSP}}</b>: {{real methods}}. Card details are entered on the payment provider’s secure page; we never see them. A receipt is emailed to you.]]</p>
+</form>
+<script src="assets/buy.js"></script>
